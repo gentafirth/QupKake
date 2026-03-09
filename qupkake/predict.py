@@ -225,17 +225,20 @@ def make_sites_prediction_files(
     )
 
 
-def render_molecule(mol: torch.Tensor) -> None:
+def render_molecule(root: str, output: str) -> None:
     """Render a molecule from its SDF representation.
 
     Args:
-        mol (torch.Tensor): tensor representation of the molecule
+        root (str): Root directory for the project
+        output (str): Output file name
     """
 
-    from ..xyzrender import load, render, render_gif, build_config, measure
+    from ..xyzrender import load, render #, render_gif, build_config, measure
 
-    # Implementation for rendering molecule
-    pass
+    mol = load(f"{root}/raw/{output}")
+    render(mol, idx="n", output=f"{root}/data/{output}.png")  # save as PNG
+
+    return None
 
 def run_prediction_pipeline(
     root: str,
@@ -282,6 +285,7 @@ def run_prediction_pipeline(
             includeFingerprints=False,
             molColName="ROMol",
         )
+        render_molecule(root, output)
 
         print(20*"##", flush=True)
         print(type(df), flush=True)
@@ -289,7 +293,6 @@ def run_prediction_pipeline(
 
         df["pka"] = pka_predictions
 
-        #TODO: Implement xyz render for easier interpretation of results
         PandasTools.WriteSDF(
             df,
             f"{root}/output/{output}",
