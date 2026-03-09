@@ -107,3 +107,10 @@ ENV/
 
 # In-tree generated files
 #*/_version.py
+
+.DS_Store
+devtools/.DS_Store
+docs/.DS_Store
+qupkake/.DS_Store
+qupkake/xtb-641/.DS_Store
+qupkake/xtb-641/xtb-6.4.1/.DS_Store
