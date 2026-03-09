@@ -242,7 +242,7 @@ def render_molecule(root: str, output: str) -> None:
         ) from exc
 
     mol = load(f"{root}/raw/{output}")
-    render(mol, idx="n", output=f"{root}/output/{output}.png")
+    render(mol, idx="n", output=f"{root}/output/{output.removesuffix('.sdf')}.png")
 
     return None
 
