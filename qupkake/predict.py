@@ -225,6 +225,18 @@ def make_sites_prediction_files(
     )
 
 
+def render_molecule(mol: torch.Tensor) -> None:
+    """Render a molecule from its SDF representation.
+
+    Args:
+        mol (torch.Tensor): tensor representation of the molecule
+    """
+
+    from ..xyzrender import load, render, render_gif, build_config, measure
+
+    # Implementation for rendering molecule
+    pass
+
 def run_prediction_pipeline(
     root: str,
     filename: str,
@@ -270,11 +282,12 @@ def run_prediction_pipeline(
             includeFingerprints=False,
             molColName="ROMol",
         )
-        df["pka"] = pka_predictions
 
-        print(20*"##")
-        print(type(df))
-        print(df)
+        print(20*"##", flush=True)
+        print(type(df), flush=True)
+        print(df, flush=True)
+
+        df["pka"] = pka_predictions
 
         #TODO: Implement xyz render for easier interpretation of results
         PandasTools.WriteSDF(
