@@ -272,6 +272,11 @@ def run_prediction_pipeline(
         )
         df["pka"] = pka_predictions
 
+        print(20*"##")
+        print(type(df))
+        print(df)
+
+        #TODO: Implement xyz render for easier interpretation of results
         PandasTools.WriteSDF(
             df,
             f"{root}/output/{output}",
