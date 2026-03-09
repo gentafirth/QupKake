@@ -242,7 +242,7 @@ def render_molecule(root: str, output: str) -> None:
         ) from exc
 
     mol = load(f"{root}/raw/{output}")
-    render(mol, idx="n", output=f"{root}/data/{output}.png")
+    render(mol, idx="n", output=f"{root}/output/{output}.png")
 
     return None
 
@@ -291,12 +291,13 @@ def run_prediction_pipeline(
             includeFingerprints=False,
             molColName="ROMol",
         )
-        render_molecule(root, output)
+        
 
         print(20*"##", flush=True)
         print(type(df), flush=True)
         print(df, flush=True)
-
+        print(f"root: {root}\n output: {output}", flush=True)
+        render_molecule(root, output)
         df["pka"] = pka_predictions
 
         PandasTools.WriteSDF(
