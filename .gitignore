@@ -114,3 +114,7 @@ docs/.DS_Store
 qupkake/.DS_Store
 qupkake/xtb-641/.DS_Store
 qupkake/xtb-641/xtb-6.4.1/.DS_Store
+
+#slurm files
+slurm-*.out
+run.slurm
