@@ -119,3 +119,5 @@ qupkake/xtb-641/xtb-6.4.1/.DS_Store
 slurm-*.out
 run.slurm
 data/output/
+conda_prep.sh
+conda_recompile.sh

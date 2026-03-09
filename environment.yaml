@@ -4,7 +4,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.9
+  - python=3.10
   - pip
   - pytorch::pytorch==2.1
   - torchmetrics 
@@ -18,6 +18,6 @@ dependencies:
 
   - pip:
     - torch_geometric==2.4
+    - -e ./xyzrender
     # - torch-sparse
     # - torch-scatter
-

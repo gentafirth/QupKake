@@ -233,10 +233,16 @@ def render_molecule(root: str, output: str) -> None:
         output (str): Output file name
     """
 
-    from ..xyzrender import load, render #, render_gif, build_config, measure
+    try:
+        from xyzrender import load, render  # , render_gif, build_config, measure
+    except ImportError as exc:
+        raise ImportError(
+            "xyzrender is required for molecule rendering. Install it with "
+            "`pip install -e ./xyzrender` (Python >=3.10)."
+        ) from exc
 
     mol = load(f"{root}/raw/{output}")
-    render(mol, idx="n", output=f"{root}/data/{output}.png")  # save as PNG
+    render(mol, idx="n", output=f"{root}/data/{output}.png")
 
     return None
 
@@ -301,4 +307,4 @@ def run_prediction_pipeline(
             properties=["idx", "pka_type", "pka"],
         )
         os.remove(f"{root}/raw/{output}")
-        print(f"Predictions saved to {root}/output/{output}")
+        print(f"Predictions saved to {root}/output/{output}, and intermediate file removed.")
