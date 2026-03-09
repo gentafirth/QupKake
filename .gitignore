@@ -118,3 +118,4 @@ qupkake/xtb-641/xtb-6.4.1/.DS_Store
 #slurm files
 slurm-*.out
 run.slurm
+data/output/
