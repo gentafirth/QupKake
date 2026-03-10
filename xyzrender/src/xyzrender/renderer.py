@@ -448,12 +448,13 @@ def render_svg(graph, config: RenderConfig | None = None, *, _log: bool = True) 
         if cfg.show_indices and not is_image:
             fmt = cfg.idx_format
             sym = symbols[ai]
+            atom_id = node_ids[ai]
             if fmt == "sn":
-                idx_text = f"{sym}{ai + 1}"
+                idx_text = f"{sym}{atom_id}"
             elif fmt == "s":
                 idx_text = sym
             else:  # "n"
-                idx_text = str(ai + 1)
+                idx_text = str(atom_id)
             svg.append(_text_svg(xi, yi, idx_text, fs_label, cfg.label_color, halo=False))
 
         # Bonds to deeper atoms
